@@ -1,18 +1,45 @@
 ---
 home: true
-heroImage: /logo.ico
-heroText: Aurora
-tagline: Hero 副标题
+heroText: Aurora Web Framework
+tagline: Golang Web
 actionText: 快速上手 →
 actionLink: /start/
 features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-  footer: MIT Licensed | Copyright © 2018-present Evan You
+- title: Ioc 加载
+  details: Ioc容器对全局属性进行统一管理，运行期间按需进行依赖加载。
+- title: 零断言
+  details: 处理请求的接口，直接解析请求参数，无需断言进行参数转化。
+footer: MIT Licensed | Copyright © 2018-present Evan You
 
 search: false
 ---
+
+#### 示例
+``` go
+package main
+
+import (
+	"fmt"
+	"github.com/aurora-go/aurora"
+)
+
+type Web struct {
+	*aurora.Aurora
+}
+
+func (w *Web) Start(port interface{}) error {
+	w.Use(w)
+	return w.Guide(port)
+}
+
+func main() {
+	web := Web{Aurora: aurora.Web}
+	web.Get("/test", func() {
+		fmt.Println("test")
+	})
+	web.Start(8088)
+}
+```
+::: warning
+aurora 需要 >= v0.3.7
+:::

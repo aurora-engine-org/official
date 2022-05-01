@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'AURORA',
+    title: 'Aurora',
 
     //主题 设置
     themeConfig:{
@@ -10,10 +10,28 @@ module.exports = {
         smoothScroll: true,
         //README 侧边导航配置
         sidebar: {
+            title: '开始',
             '/start/':[
                 '',
-                '111'
+                'analysis',
+                'result',
+                'static',
+                'catch',
+                'config',
+                'component',
             ],
         },
+        nav: [
+            { text: '首页', link: '/' },
+            { text: '开始', link: '/start/' },
+            {
+                text: '语言',
+                ariaLabel: 'Language Menu',
+                items: [
+                    { text: '中文', link: '/start/' },
+                    { text: '英语', link: '/en/' }
+                ]
+            }
+        ]
     },
 }
