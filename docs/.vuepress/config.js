@@ -7,29 +7,37 @@ module.exports = {
         repo: '/aurora-go/aurora',
         //仓库分支
         docsBranch: 'master',
-        smoothScroll: true,
         //README 侧边导航配置
         sidebar: {
             title: '开始',
             '/start/':[
                 '',
+                'register',
                 'analysis',
                 'result',
                 'static',
                 'catch',
-                'config',
                 'component',
+                'config',
             ],
         },
         nav: [
-            { text: '首页', link: '/' },
-            { text: '开始', link: '/start/' },
             {
-                text: '语言',
-                ariaLabel: 'Language Menu',
+                text: '文档',
                 items: [
-                    { text: '中文', link: '/start/' },
-                    { text: '英语', link: '/en/' }
+                    { text: '教程', link: '/start/' },
+                ]
+            },
+            {
+                text: '生态系统',
+                items: [
+                    { text: '加入组织', link: '/org/' },
+                ]
+            },
+            {
+                text: '多语言',
+                items: [
+                    { text: 'English', link: '/en/' }
                 ]
             }
         ]
