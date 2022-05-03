@@ -1,5 +1,6 @@
 ---
-sidebarDepth: 3
+sidebarDepth: 5
+search: false
 ---
 # 组件管理
 Aurora 内部实现对依赖的管理容器，在开发中把 中间件,第三方库,控制器, 都归纳到了组件这一部分

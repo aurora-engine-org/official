@@ -27,9 +27,9 @@ func main() {
 	web.Get("/test", func() {
 		fmt.Println("test")
 	})
-	web.Guide(8088)
+	aurora.Run(web)
 }
 ```
 ::: warning
-aurora 需要 >= v0.3.7
+aurora 需要 >= v0.3.8
 :::
