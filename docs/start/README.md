@@ -32,7 +32,7 @@ go 1.18
    import "github.com/aurora-go/aurora"
    ```
 ### 使用 aurora.Web <br>
-   aurora 提供了一个默认实例，直接使用这个实例或者，匿名嵌入该实例来完成web服务器的开发
+   ```Aurora``` 提供了一个默认实例，直接使用这个实例或者，匿名嵌入该实例来完成web服务器的开发
    
 #### 自定义一个服务器
    ```go
@@ -58,7 +58,7 @@ func Test() {
 #### 访问接口 /test
 
 #### 如何修改端口号
-项目下面创建application.yml 配置文件写入:
+项目下面[创建application.yml](/start/config.html) 配置文件写入:
 ```yml
 aurora:
   serve:
