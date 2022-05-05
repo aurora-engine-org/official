@@ -26,13 +26,7 @@ func main() {
 	//把自己的处理函数 注册到Get请求上
 	web.Get("/test", web.Gets)
 	//启动服务器
-	web.Start(8088)
-}
-
-func (w *Web) Start(port interface{}) error {
-    // 把自己作为处理器使用，加载
-	w.Use(w)
-	return w.Guide(port)
+	aurora.Run(web)
 }
 ```
 
@@ -68,7 +62,7 @@ func main() {
 	web := &Web{Aurora: aurora.Web}
 	// 直接Use即可
 	web.Use(Logs())
-	web.Start(8088)
+	aurora.Run(web)
 }
 .....
 .....
@@ -84,7 +78,27 @@ func Logs() aurora.Log {
 ```
 
 ### 中间件组件
-在 ```Use()```中使用中间件，是一个全局的行为.
+在 ```Use()```中使用中间件，是一个全局的行为.<br>
+#### 创建一个中间件
+```go
+func TestMiddleware() aurora.Middleware {
+	return func(ctx aurora.Ctx) bool {
+		fmt.Println("test_middleware")
+		return true
+	}
+}
+```
+#### 使用中间件
+```go
+func main() {
+	web := aurora.Web
+	web.Use(TestMiddleware())
+	web.Get("/", func() {
+		fmt.Println("/")
+	})
+	aurora.Run(web)
+}
+```
 
 ### 自定义组件
 在代码中直接调用 ```Component(string,Component)``` 完成注册。
