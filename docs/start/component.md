@@ -101,8 +101,82 @@ func main() {
 ```
 
 ### 自定义组件
-可以把开发者自己的实例交由 Aurora 的依赖管理容器，并且给改实例取id，此处的id在容器中必须唯一。Aurora 的依赖缓存机制原因在初始化容器之前并不能检查id的唯一性，开发者在使用期间需要自己检查这一方面
+可以把开发者自己的实例交由 Aurora 的依赖管理容器，并且给该实例取id，此处的id在容器中必须唯一。Aurora 的依赖缓存机制原因在初始化容器之前并不能检查id的唯一性，开发者在使用期间需要自己检查这一方面
 。
+
+#### 测试
+```go
+type Web struct {
+	*aurora.Aurora
+	B *Bbb `ref:"b"`
+}
+
+func (w *Web) Index() string {
+	fmt.Println(w.B)
+	return "/index.html"
+}
+
+type Aaa struct {
+	B *Bbb `ref:"b"`
+}
+
+type Bbb struct {
+	C *Ccc `ref:"c"`
+}
+
+type Ccc struct {
+	Next *Ccc `ref:"c"`
+}
+
+type Ddd struct {
+	E Eee `ref:"e"`
+}
+
+type Eee struct {
+	Name string
+}
+
+type Fff struct {
+}
+```
+#### 全局方法注册组件
+使用 `aurora.Use()` 注册
+```go
+func main() {
+    //注册 一个id为c 和 一个id为b 的组件
+	aurora.Use(aurora.Web, aurora.Component{
+		"c": &Ccc{},
+		"b": &Bbb{},
+	})
+	web := &Web{Aurora: aurora.Web}
+	web.Get("/", web.Index)
+	err := aurora.Run(web)
+	if err != nil {
+		web.Error(err.Error())
+		return
+	}
+}
+```
+
+#### 实例方法注册组件
+
+```go
+func main() {
+	web := &Web{Aurora: aurora.Web}
+	//注册 一个id为c 和 一个id为b 的组件
+	web.Use(aurora.Component{
+		"c": &Ccc{},
+		"b": &Bbb{},
+	})
+	web.Get("/", web.Index)
+	err := aurora.Run(web)
+	if err != nil {
+		web.Error(err.Error())
+		return
+	}
+}
+```
+
 ::: warning
-需要注意的一点，注册的类型和使用时候的类型需要一一对应，通常情况下都是使用指针的方式进行注册。
+需要注意的一点，注册的类型和使用时候的类型需要一一对应，通常情况下都是使用指针的方式进行注册。自定义组件api 需要 v0.3.9
 :::
