@@ -19,6 +19,7 @@ module.exports = {
                 'catch',
                 'component',
                 'config',
+                'project',
             ],
         },
         nav: [
