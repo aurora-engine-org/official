@@ -25,7 +25,7 @@ go 1.18
 
 ### 获取依赖
    ```shell
-   go get -u github.com/aurora-go/aurora@v0.3.9
+   go get -u github.com/aurora-go/aurora@v0.4.0
    ```
 ### 导入依赖
    ```go
@@ -63,5 +63,15 @@ aurora.Run(web)
 aurora:
   serve:
     port: 8088
+```
+
+#### tls
+```yml
+aurora:
+  serve:
+    port: xxxx
+    tls:
+      certFile: xx/xx/xxx.cert
+      keyFile: xx/xxx/xxx.pem
 ```
 
