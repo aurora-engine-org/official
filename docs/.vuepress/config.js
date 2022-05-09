@@ -1,6 +1,8 @@
 module.exports = {
     title: 'Aurora',
-
+    markdown: {
+        lineNumbers: true
+    },
     //主题 设置
     themeConfig:{
         //仓库配置

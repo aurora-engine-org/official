@@ -48,12 +48,12 @@ func Test() {
 ```
 #### 注册处理函数
 ```go
-   web := &Web{Aurora: aurora.Web}
-   web.Get("/test", Test)
+web := &Web{Aurora: aurora.Web}
+web.Get("/test", Test)
 ```
 #### 启动服务器
 ```go
-   aurora.Run(web)
+aurora.Run(web)
 ```
 #### 访问接口 /test
 
