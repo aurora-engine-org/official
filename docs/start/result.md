@@ -25,3 +25,13 @@ a.Get("/", func() map[string]string {
     return map[string]string{"a": "aa"}
 })
 ```
+
+## 请求转发
+通过返回一个指定的格式进行请求转发: `forward:/xxx/xxx` 指定请求转发到一个具体的路由上，转发请求的限制是请求类型，只能转发到
+同类型请求方法中。请求转发会携带当前的上下文，请求体到指定的接口上。
+```go
+a.Get("/", func() string {
+    //重定向到 /xxx/xxx 服务
+    return "forward:/xxx/xxx"
+})
+```
