@@ -17,11 +17,13 @@ module.exports = {
                 'register',
                 'analysis',
                 'result',
+                'middleware',
                 'static',
                 'catch',
                 'component',
                 'config',
                 'project',
+
             ],
         },
         nav: [
