@@ -25,7 +25,7 @@ go 1.18
 
 ### 获取依赖
    ```shell
-   go get -u github.com/aurora-go/aurora@v0.4.1
+   go get -u github.com/aurora-go/aurora@v0.4.4
    ```
 ### 导入依赖
    ```go
