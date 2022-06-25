@@ -25,7 +25,7 @@ import (
 )
 
 func main() {
-	web := aurora.Web
+	web :=aurora.NewAurora()
 	web.Get("/test", func() {
 		fmt.Println("test")
 	})

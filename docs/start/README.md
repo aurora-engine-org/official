@@ -25,7 +25,7 @@ go 1.18
 
 ### 获取依赖
    ```shell
-   go get -u github.com/aurora-go/aurora@v0.4.4
+   go get -u github.com/aurora-go/aurora@v0.4.7
    ```
 ### 导入依赖
    ```go
@@ -34,11 +34,9 @@ go 1.18
 ### 使用 aurora.Web <br>
    ```Aurora``` 提供了一个默认实例，直接使用这个实例或者，匿名嵌入该实例来完成web服务器的开发
    
-#### 自定义一个服务器
+#### 创建服务器实例
    ```go
-   type Web struct {
-     *aurora.Aurora
-   }
+   web := aurora.NewAurora()
    ```
 #### 定义一个处理函数
 ```go
@@ -48,7 +46,6 @@ func Test() {
 ```
 #### 注册处理函数
 ```go
-web := &Web{Aurora: aurora.Web}
 web.Get("/test", Test)
 ```
 #### 启动服务器

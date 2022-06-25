@@ -29,7 +29,7 @@ func (c *Control) Test(){
 3. 注册结构体为处理器
 ```go
 func main(){
-    a:=aurora.Web
+    a:=aurora.NewAurora()
     c:=&Control{}
     a.Use(c)
     a.Get("/test",c.Test)
